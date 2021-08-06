@@ -1,0 +1,13 @@
+include ':app'
+rootProject.name = "TestFlutterEngine"
+
+//设置下面数据  TestFlutterEngine对应app名称   test_engine_flutter_module对应flutter module名称
+setBinding(new Binding([gradle: this, mainModuleName: 'TestFlutterEngine']))
+evaluate(new File(
+        settingsDir.parentFile,
+        'test_engine_flutter_module/.android/include_flutter.groovy'
+))
+
+///下面是自动生成数据
+include ':test_engine_flutter_module'
+project(':test_engine_flutter_module').projectDir = new File('../test_engine_flutter_module')
